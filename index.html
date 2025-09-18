@@ -1,4 +1,96 @@
-<!doctype html>
+<!-- === DONATE PANEL WITH BOTTOM REAPPEAR ================ -->
+<style>
+  .donate-wrap{
+    position:fixed;top:20px;right:20px;z-index:1000;
+    display:flex;flex-direction:column;align-items:flex-end;gap:10px;
+    font-family:'Segoe UI',system-ui,sans-serif;
+  }
+  .donate-card{
+    max-width:min(500px,95vw);
+    border-radius:20px;padding:18px 20px;
+    background:linear-gradient(180deg,rgba(20,28,36,.92),rgba(12,18,28,.85));
+    border:2px solid #35ff8a;
+    box-shadow:0 0 30px #35ff8a88,0 0 60px #7cf6ff55;
+    color:#eaffef;text-align:left;
+    animation:floaty 6s ease-in-out infinite;
+  }
+  @keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+
+  .donate-title{
+    font-size:20px;font-weight:900;margin-bottom:10px;
+    text-shadow:0 0 12px #7cf6ff,0 0 24px #35ff8a;
+  }
+  .donate-line{font-size:15px;margin-bottom:14px;line-height:1.4}
+  .donate-line em{color:#ffe66d;font-style:normal;font-weight:700}
+
+  .donate-btns{display:flex;flex-wrap:wrap;gap:10px}
+  .don-btn{
+    all:unset;cursor:pointer;padding:10px 18px;border-radius:14px;font-weight:800;
+    font-size:15px;display:inline-flex;align-items:center;gap:8px;
+    background:linear-gradient(180deg,#b9ffd8,#54f7a9);color:#0a1f14;
+    box-shadow:0 0 20px #35ff8a88,inset 0 0 0 2px rgba(0,0,0,.2);
+  }
+  .don-btn--blue{
+    background:linear-gradient(180deg,#a9e6ff,#3393ff);color:#fff;
+    box-shadow:0 0 20px #7cf6ff88,inset 0 0 0 2px rgba(0,0,0,.2);
+  }
+  .don-row{display:flex;justify-content:flex-end;margin-top:10px}
+  .don-mini{
+    all:unset;cursor:pointer;padding:6px 12px;border-radius:10px;font-size:13px;
+    font-weight:700;color:#fff;
+    background:linear-gradient(180deg,#ff8ba7,#ff3355);
+    box-shadow:0 0 12px #ff6db488;
+  }
+
+  /* Reappear button fixed at bottom center */
+  #donReappear{
+    display:none;position:fixed;bottom:20px;left:50%;transform:translateX(-50%);
+    cursor:pointer;padding:12px 18px;border-radius:16px;font-weight:800;
+    background:linear-gradient(180deg,#ffe66d,#ff9e33);
+    box-shadow:0 0 20px #ffae5588;
+    color:#1a1205;font-size:15px;z-index:1001;
+    animation:pulse 2s infinite;
+  }
+  @keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.1)}}
+</style>
+
+<div class="donate-wrap">
+  <div class="donate-card" id="donCard">
+    <div class="donate-title">✨ We Help Kids Create ✨</div>
+    <div class="donate-line">
+      Together we turn <em>what if</em> into <em>we did</em> —
+      giving kids in need the tools to <em>draw, dream, and discover</em>.
+      Your gift fuels art, music, and safe spaces for their imagination. 🌈
+    </div>
+    <div class="donate-btns">
+      <a class="don-btn" href="https://cash.app/$lightwell333" target="_blank">💚 CashApp</a>
+      <a class="don-btn don-btn--blue" href="https://paypal.me/lightwell333" target="_blank">💙 PayPal</a>
+    </div>
+    <div class="don-row">
+      <button class="don-mini" id="donClose">Close</button>
+    </div>
+  </div>
+</div>
+
+<button id="donReappear">💫 Reappear Donate</button>
+
+<script>
+(()=> {
+  const card=document.getElementById('donCard');
+  const close=document.getElementById('donClose');
+  const reappear=document.getElementById('donReappear');
+
+  close.addEventListener('click', ()=>{
+    card.style.display='none';
+    reappear.style.display='inline-block';
+  });
+  reappear.addEventListener('click', ()=>{
+    card.style.display='block';
+    reappear.style.display='none';
+  });
+})();
+</script>
+<!-- === /DONATE PANEL ================================== --><!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8" />
